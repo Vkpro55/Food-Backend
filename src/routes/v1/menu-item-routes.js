@@ -24,4 +24,6 @@ router.post('/',
     MenuItemMiddlewares.validatePostRequest,
     MenuItemControllers.createMenuItem);
 
+router.get('/:id', MenuItemControllers.fetchItem)
+
 module.exports = router;

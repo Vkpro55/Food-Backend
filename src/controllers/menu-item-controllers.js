@@ -36,7 +36,7 @@ async function createMenuItem(req, res) {
             .status(StatusCodes.CREATED)
             .json(SuccessResponse);
     } catch (error) {
-        ErrorResponse.error = error.message;
+        ErrorResponse.error = error;
 
         return res
             .status(error.statusCode)
@@ -44,7 +44,24 @@ async function createMenuItem(req, res) {
     }
 }
 
+async function fetchItem(req, res) {
+    try {
+        const response = await MenuItemService.fetchItem(req.params.id);
+
+        SuccessResponse.data = response;
+        return res
+            .status(StatusCodes.CREATED)
+            .json(SuccessResponse);
+    } catch (error) {
+        ErrorResponse.error = error;
+
+        return res
+            .status(error.statusCode)
+            .json(ErrorResponse);
+    }
+}
 module.exports = {
     fetchByCategory,
+    fetchItem,
     createMenuItem
 }

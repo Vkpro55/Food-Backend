@@ -1,6 +1,19 @@
+const { StatusCodes } = require('http-status-codes');
+const AppError = require('../utils/errors/app-error');
+
 const MenuItemModel = require('../models/MenuItem');
 
 class MenuItemRepository {
+
+    async get(id) {
+        const menuItem = await MenuItemModel.findById(id);
+
+        if (!menuItem) {
+            throw new AppError('Requested menu-item is not found', StatusCodes.NOT_FOUND);
+        }
+
+        return menuItem;
+    }
 
     async getAll(category) {
         const allItems = await MenuItemModel.find();

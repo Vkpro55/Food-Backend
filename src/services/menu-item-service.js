@@ -21,7 +21,23 @@ async function createMenuItem(data) {
     }
 }
 
+async function fetchItem(id) {
+    try {
+        const menuItem = await menuItemRepo.get(id);
+        return menuItem;
+    } catch (error) {
+        if (error.name === 'CastError') {
+            throw new AppError(error.message, StatusCodes.NOT_FOUND);
+        }
+        if (error instanceof AppError) {
+            throw error;
+        }
+        throw new AppError('Error while creating new menu-item', StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
 module.exports = {
     fetchByCategory,
-    createMenuItem
+    createMenuItem,
+    fetchItem
 }
