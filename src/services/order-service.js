@@ -13,10 +13,8 @@ async function createOrder(data) {
         }
 
         const order = await orderRepository.create(data);
-        console.log("Service Order is :", order);
         return order;
     } catch (error) {
-        console.log("Service Error is :", error);
         if (error.name === "SequelizeValidationError" || error.name === "SequelizeUniqueConstraintError") {
             let explanation = [];
             error.errors.forEach((err) => {
@@ -32,10 +30,8 @@ async function createOrder(data) {
 async function fetchAllOrders(data) {
     try {
         const allOrders = await orderRepository.getAll(data);
-        console.log("Response from service is :", allOrders);
         return allOrders;
     } catch (error) {
-        console.log("Error from service is :", error);
         throw new AppError("Cannot create a new User object", StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
