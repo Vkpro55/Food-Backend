@@ -5,7 +5,9 @@ const { MenuItemService } = require('../services');
 
 async function fetchByCategory(req, res) {
     try {
-        const response = await MenuItemService.fetchByCategory(req.query.category);
+        const category = req.query.category.toLowerCase();
+        console.log(category);
+        const response = await MenuItemService.fetchByCategory(category);
 
         SuccessResponse.data = response;
         return res

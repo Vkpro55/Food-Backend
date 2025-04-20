@@ -1,3 +1,4 @@
 module.exports = {
-    MenuItemControllers: require('./menu-item-controllers')
+    MenuItemControllers: require('./menu-item-controllers'),
+    UserControllers: require('./user-controller')
 }
