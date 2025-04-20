@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       this.hasMany(models.Order, {
-        foreignKey: "orderId",
+        foreignKey: "userId",
         onDelete: 'CASCADE',
       });
     }
