@@ -5,14 +5,14 @@ const { MenuItemService } = require('../services');
 
 async function fetchByCategory(req, res) {
     try {
-        const response = await MenuItemService.fetchByCategory(req.query.fetchByCategory);
+        const response = await MenuItemService.fetchByCategory(req.query.category);
 
         SuccessResponse.data = response;
         return res
             .status(StatusCodes.OK)
             .json(SuccessResponse);
     } catch (error) {
-        ErrorResponse.error = error.message;
+        ErrorResponse.error = error;
 
         return res
             .status(error.statusCode)

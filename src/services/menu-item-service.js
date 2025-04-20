@@ -6,9 +6,18 @@ const menuItemRepo = new MenuItemRepository();
 
 async function fetchByCategory(data) {
     try {
-        const response = await menuItemRepo.getAll(data);
-    } catch (error) {
+        const allItems = await menuItemRepo.getAll(data);
 
+        if (allItems.length <= 0) {
+            throw new AppError('Requested category item is not present', StatusCodes.NOT_FOUND);
+        }
+
+        return allItems;
+    } catch (error) {
+        if (error instanceof AppError) {
+            throw error;
+        }
+        throw new AppError('Error while fetching menu-items', StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
 

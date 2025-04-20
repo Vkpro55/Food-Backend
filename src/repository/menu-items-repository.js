@@ -17,7 +17,11 @@ class MenuItemRepository {
 
     async getAll(category) {
         const allItems = await MenuItemModel.find();
-        console.log(allItems);
+        const filteredItem = allItems.filter((item) => {
+            return item.category === category;
+        })
+
+        return filteredItem;
     }
 
     async create({ name, imageURL, category, price, rating, description }) {
