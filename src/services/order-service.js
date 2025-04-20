@@ -29,6 +29,18 @@ async function createOrder(data) {
     }
 }
 
+async function fetchAllOrders(data) {
+    try {
+        const allOrders = await orderRepository.getAll(data);
+        console.log("Response from service is :", allOrders);
+        return allOrders;
+    } catch (error) {
+        console.log("Error from service is :", error);
+        throw new AppError("Cannot create a new User object", StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
 module.exports = {
-    createOrder
+    createOrder,
+    fetchAllOrders
 }

@@ -17,4 +17,7 @@ router.post('/',
     OrderMidllewares.validateOrderRequest,
     OrderControllers.createOrder);
 
+router.get('/:userId',
+    OrderControllers.fetchAllOrders);
+
 module.exports = router;

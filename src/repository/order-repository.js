@@ -12,6 +12,14 @@ class OrderRepository {
         return order;
     }
 
+    async getAll({ userId }) {
+        const orders = await Order.findAll({
+            where: { userId },
+            order: [['createdAt', 'DESC']],
+        });
+        return orders;
+    }
+
 }
 
 module.exports = OrderRepository;

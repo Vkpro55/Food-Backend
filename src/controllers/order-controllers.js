@@ -5,7 +5,6 @@ const { OrderService } = require('../services');
 
 async function createOrder(req, res) {
     try {
-        console.log("Controller")
         const response = await OrderService.createOrder({
             userId: req.body.userId,
             items: req.body.items,
@@ -25,6 +24,26 @@ async function createOrder(req, res) {
     }
 }
 
+async function fetchAllOrders(req, res) {
+    try {
+        const response = await OrderService.fetchAllOrders({
+            userId: req.params.userId
+        });
+
+        SuccessResponse.data = response;
+        return res
+            .status(StatusCodes.OK)
+            .json(SuccessResponse);
+    } catch (error) {
+        ErrorResponse.error = error;
+
+        return res
+            .status(error.statusCode)
+            .json(ErrorResponse);
+    }
+}
+
 module.exports = {
-    createOrder
+    createOrder,
+    fetchAllOrders
 }
