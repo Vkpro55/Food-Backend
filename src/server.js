@@ -20,7 +20,7 @@ app.use(express.json());
 
 /*== Handle cross-origin request ==*/
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "*",
     methods: ["GET", "POST", "DELETE", "PATCH"],
     credentials: true
 }
