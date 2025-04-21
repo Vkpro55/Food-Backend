@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
     "migrate": "npx sequelize-cli db:migrate --config src/config/config.js",
-    "seed": "npx sequelize-cli db:seed:all --config src/config/config.js"
+    "seed": "npx sequelize-cli db:seed:all --config src/config/config.js",
+    "migrate:prod": "npx sequelize-cli db:migrate --env production --config src/config/config.js",
+    "seed:prod": "npx sequelize-cli db:seed:all --env production --config src/config/config.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +24,7 @@
     "express": "^5.1.0",
     "http-status-codes": "^2.3.0",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.15.0",
     "mongoose": "^8.13.2",
     "pg": "^8.14.1",
     "pg-hstore": "^2.3.4",
