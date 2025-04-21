@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
-    "migrate": "npx sequelize-cli db:migrate --config src/config/config.js",
-    "seed": "npx sequelize-cli db:seed:all --config src/config/config.js",
-    "migrate:prod": "npx sequelize-cli db:migrate --env production --config src/config/config.js",
-    "seed:prod": "npx sequelize-cli db:seed:all --env production --config src/config/config.js"
+    "migrate": "npx sequelize-cli db:migrate --config ./src/config/config.js --migrations-path ./src/migrations",
+    "seed": "npx sequelize-cli db:seed:all --config ./src/config/config.js --seeders-path ./src/seeders",
+    "migrate:prod": "npx sequelize-cli db:migrate --env production --config ./src/config/config.js --migrations-path ./src/migrations",
+    "seed:prod": "npx sequelize-cli db:seed:all --env production --config ./src/config/config.js --seeders-path ./src/seeders"
   },
   "keywords": [],
   "author": "",
